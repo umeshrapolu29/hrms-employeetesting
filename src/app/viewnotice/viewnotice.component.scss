@@ -1,0 +1,84 @@
+.card{
+    box-shadow: 0 0 15px -5px black;
+}
+.btn:hover{
+    background: green;
+    color: white;
+}
+thead{
+    background: #ccc;
+}
+.report{
+    color: #0177bc;
+    font-size: 23px;
+}
+.titleName{
+    font-weight: bold;
+    margin-top: 63px;
+}
+.Homebar i,.Homebar a{
+    color:#0177bc;
+}
+.btnShow{
+    background: #e4e2e2;
+
+}
+.btnShow:hover{
+    background: #e4e2e2;
+
+}
+table{     
+        font-style: normal;
+       }
+// .actionIcons i{
+//     
+//     
+//     
+
+// }
+.actionIcons button{
+    background: white;
+    box-shadow: 1px 1px 3px -1px black;
+    background: none;
+    outline: none;
+    border: none;
+    margin-right: 20PX;
+    padding: 5px;
+    width: 30px;
+}
+// @font-face {
+//     font-family: 'Poppins';
+//     font-style:normal;
+//     font-weight:400;
+//     src: url('../assets/font/Poppins-Regular.ttf');
+//     }
+    // @font-face {
+    // font-family: 'Poppins';
+    // font-style:bold;
+    // font-weight:700;
+    // src: url('../assets/font/Poppins-Bold.ttf');
+    // }
+    // $font-family-base:'Poppins';
+
+//   .card,table,h3{
+//      font-family: "Poppins script=all rev=2"  !important;
+// font-weight: 400;
+//     font-style: normal;
+//     }
+// @font-face {
+//     font-family: 'Poppins';
+//     font-style:normal;
+//     font-weight:400;
+//     src: url('../assets/font/Poppins-Regular.ttf');
+//     }
+//     @font-face {
+//     font-family: 'Poppins';
+//     font-style:bold;
+//     font-weight:700;
+//     src: url('../assets/font/Poppins-Bold.ttf');
+//     }
+//     .container{
+//     font-family: 'Poppins' !important;
+//     font-weight: 900;
+//     font-style:normal;
+//     }

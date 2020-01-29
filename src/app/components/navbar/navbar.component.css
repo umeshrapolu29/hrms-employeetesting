@@ -1,0 +1,28 @@
+/* li:hover{
+    background-color: rgb(207, 136, 5);
+    }
+span:hover{
+       color: white;
+    }
+    .nav-item  .badge{
+        font-size: 3px;
+    } */
+    .fa,.fas{
+        font-size: 15px;
+    }
+    .nav{
+    
+      background:  #2a4d69; 
+
+       
+    }
+   li:hover{
+        background: hsl(224, 25%, 54%);
+    }
+  .barIcon{
+      
+      font-size: 19px;
+      color: black;
+      margin-left: 48px;
+  }
+   

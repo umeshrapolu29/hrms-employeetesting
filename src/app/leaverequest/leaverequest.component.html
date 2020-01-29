@@ -1,0 +1,258 @@
+<form name="form" #f="ngForm"  novalidate>
+<div class="container"> 
+		<div class="page-bar">
+			   <h3 class="titleName">
+				Leave Request
+				 </h3>
+				  <ul class="page-breadcrumb">
+				 <li class="Homebar">
+				   <i class="fa fa-home"></i>
+				   <a href="#" routerLink="/homepage">Home</a>
+				  
+				 </li>
+				 <li>
+					 <i class="fa fa-angle-right"></i>
+				   <a href="#" routerLink="/leaverequest">	Leave Request</a>
+				  </li>
+				</ul>  
+       </div>
+       
+       <div class="accordion" id="accordionExample">
+          <div class="card">
+               <div class="card-header" id="headingOne">
+                 <h4 class="mb-0">
+                   <span class="font-weight-bold report">Leave Status</span>
+                   <button class="btn btn-link btn-sm bg-primary text-white float-right font-weight-bold" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                   Show
+                   </button>
+                 </h4>
+               </div>
+              <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                 <hr class="bg-primary">
+                   
+              <div class="card-body">
+                <p class="font-weight-bolder statusdata">leave Status : &nbsp;<span class="text-primary font-weight-bold status">{{leavestatus}}</span></p>
+              </div>
+               </div>
+             </div>
+               <div class="card">
+               <div class="card-body">
+                  <h4 class="font-weight-bold report"> <i class="fa fa-edit fa-1x"></i> Apply for Leave</h4>
+                    <hr class="bg-primary">
+									
+                                 <div class="row mt-4">
+                                    <div class="col-lg-6">
+
+									  
+                                        <mat-form-field>
+                                           <mat-label>Leave Type</mat-label>
+                                             <mat-select [(value)]="leaveType" name="type" [(ngModel)]="leavedata.type" #Ltype="ngModel" required>
+                                             <mat-option>None</mat-option>
+                                             <mat-option value="Sick">Sick</mat-option>
+                                             <mat-option value="Casual">Casual</mat-option>
+                                             <mat-option value="Optional">Optional</mat-option>
+                                             <mat-option value="Unpaid">Unpaid</mat-option>
+                                             <mat-option value="Emergency">Emergency</mat-option>
+                                             <mat-option value="Others">Others</mat-option>
+                                             </mat-select>
+                                           </mat-form-field> 
+                                           <div *ngIf="Ltype.touched && Ltype.invalid">
+                                              <div *ngIf="Ltype.errors?.required"><span style="color: red"><strong>Leave type is required!..</strong></span></div>
+                    
+                                            </div>
+                                            <p>You selected: <b class=" field">{{leaveType}}</b></p> 
+                                          </div>
+                                   <div class="col-lg-6">
+                                    
+									        <div class="input-group  text-center">
+                              <fieldset disabled>                                
+                                  <div class="form-group">
+                                      <mat-form-field>
+                                          <input class="font-weight-bolder text-dark date" matInput type="date" id="disabledTextInput"  placeholder="Applied Date"  name="" value="{{mydate | date:'yyyy-MM-dd'}}" >
+                                           </mat-form-field>
+                                   <!-- <input type="text" id="disabledTextInput" class="form-control"><b>{{date | date:'yyyy-MM-dd'}}</b> -->
+                                  </div>
+                                  </fieldset>
+                            </div> 
+                                   </div>
+                                  
+                      </div>
+                           <div class="row">
+                            <div class="col-lg-6">
+                               <mat-form-field>
+                                   <input matInput type="date"  placeholder="From Date"  name="fromDate" [(ngModel)]="leavedata.fromDate" #fromDate="ngModel" required>
+                                    </mat-form-field>
+                                    <div *ngIf="fromDate.touched && fromDate.invalid">
+                                        <div *ngIf="fromDate.errors?.required"><span style="color: red"><strong>From Date is required!..</strong></span></div>
+              
+                                      </div>
+   
+                            </div>
+                            <div class="col-lg-6">
+                              <mat-form-field>
+                                <input matInput type="date"  placeholder="To Date"  name="toDate" [(ngModel)]="leavedata.toDate" #toDate="ngModel" required>
+                                 </mat-form-field>
+                                 <div *ngIf="toDate.touched && toDate.invalid">
+                                    <div *ngIf="toDate.errors?.required"><span style="color: red"><strong>To Date is required!..</strong></span></div>
+          
+                                  </div>
+
+
+                             </div>
+                          </div>
+											
+											 <mat-form-field class="example-full-width">
+													<textarea matInput placeholder="Reason"  name="reason" [(ngModel)]="leavedata.reason" #reason="ngModel" required></textarea>
+                          </mat-form-field>
+                          <div *ngIf="reason.touched && reason.invalid">
+                              <div *ngIf="reason.errors?.required"><span style="color: red"><strong> Reason is required!..</strong></span></div>
+    
+                            </div>
+                           
+                           <a mat-button (click)="leaverequest()"  class="btn bg-primary rounded grtBtn mt-4"> Submit</a>
+                  
+                          </div>
+								 </div>
+					</div>
+               </div>
+              </form>
+           
+
+				<!-- <div class="row">
+					<div class="col">
+              <h4 class="font-weight-bold mb-4 float-right report"></i>Leave Status</h4>
+						   <div class="card">
+							 
+								   
+								   <div class="card-body">
+                    <h4 class="font-weight-bold report"> <i class="fa fa-edit fa-1x"></i> Apply for Leave</h4>
+                    <hr class="bg-primary">
+									
+                                 <div class="row mt-4">
+                                    <div class="col-lg-6">
+
+									  
+                                        <mat-form-field>
+                                           <mat-label>Leave Type</mat-label>
+                                             <mat-select [(value)]="leaveType" name="type" [(ngModel)]="leavedata.type">
+                                             <mat-option>None</mat-option>
+                                             <mat-option value="Sick">Sick</mat-option>
+                                             <mat-option value="Casual">Casual</mat-option>
+                                             <mat-option value="Optional">Optional</mat-option>
+                                             <mat-option value="Unpaid">Unpaid</mat-option>
+                                             <mat-option value="Emergency">Emergency</mat-option>
+                                             <mat-option value="Others">Others</mat-option>
+                                             </mat-select>
+                                           </mat-form-field> 
+                                            <p>You selected: <b class=" field">{{leaveType}}</b></p> 
+                                          </div>
+                                   <div class="col-lg-6">
+                                    
+									        <div class="input-group  text-center">
+                              <fieldset disabled>
+                                  <div class="form-group">
+                                   <input type="text" id="disabledTextInput" class="form-control " value="27-Aug-2019"><b>{{date | date:'yyyy-MM-dd'}}</b>
+                                  </div>
+                                  </fieldset>
+                            </div> 
+                                   </div>
+                                  
+                      </div>
+                           <div class="row">
+                            <div class="col-lg-6">
+                               <mat-form-field>
+                                   <input matInput type="date"  placeholder="From Date"  name="fromDate" [(ngModel)]="leavedata.fromDate">
+                                    </mat-form-field>
+   
+                            </div>
+                            <div class="col-lg-6">
+                              <mat-form-field>
+                                <input matInput type="date"  placeholder="To Date"  name="fromDate" [(ngModel)]="leavedata.fromDate">
+                                 </mat-form-field>
+
+                             </div>
+                          </div>
+											
+											 <mat-form-field class="example-full-width">
+													<textarea matInput placeholder="Reason"  name="reason" [(ngModel)]="leavedata.reason"></textarea>
+                          </mat-form-field>
+                           <a mat-button  (click)="leaverequest()" class="btn bg-primary rounded grtBtn mt-4"> Submit</a>
+								   </div>
+								 </div>
+					</div>
+				
+				</div> -->
+ <!-- <div class="page-content-wrapper" style="margin-left: -237px;">
+    <div class="page-content bgLogo" style="margin-right: -232px;"> 
+  
+        <h4 class="page-title">
+            Leave Applications
+            </h4>
+            <div class="float-right">
+                <img src="/assets/img/black logo.png" height="50px" width="200px" class="">
+              </div>
+            <div class="page-bar">
+                <ul class="page-breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a >Home</a>
+                        <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a >Leave Applications</a>
+                     </li>
+                </ul>
+  
+            </div>
+             <div class="portlet box blue">
+
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="far fa-calendar-alt fa-2x" style="color:hsl(20, 6%, 10%);"></i> Leave Application
+                    </div>
+                    <div class="tools">
+                    </div>
+                </div>
+
+              
+                <div class="portlet-body">
+                    <div class="container">
+                        
+  
+        <button type="button" class="btn #ccc px-3 py-2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success py-2 ml-3" (click)="leaverequest()" data-dismiss="modal">Send Request</button>
+          
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-primary text-white p-2 mb-3">
+                <h4 class="modal-title" id="exampleModalLabel"><i class="far fa-calendar-edit"></i><strong> Leave Status</strong></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form >
+                  <p > Your Leave Request is:{{leavestatus}}</p>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+           
+        
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        
+        <div id="calendar" class="mr-4"></div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      </div>         
+    -->
+                 

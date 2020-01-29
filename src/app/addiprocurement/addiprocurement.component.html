@@ -1,0 +1,97 @@
+     <div class="page-content-wrapper">
+      <div class="page-content bgLogo">
+    
+        <h3>
+         Add Iprocurement
+        </h3>
+        <div class="float-right">
+            <img src="/assets/img/black logo.png" height="50px" width="200px" class="">
+          </div>
+        <div class="page-bar">
+          <ul class="page-breadcrumb">
+            <li>
+              <i class="fa fa-home"></i>
+              <a href="#" routerLink="/homepage">Home</a>
+              <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+              <a href="#" routerLink="/iprocurement">Iprocurement</a>
+              <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+              <a href="#" routerLink="/iprocurement">Add Iprocurement</a>
+              
+            </li>
+    
+          </ul>
+    
+        </div>
+   
+        <div class="row">
+          <div class="col-md-12">
+  
+            <div class="portlet box blue">
+              <div class="portlet-title">
+                <div class="caption">
+                  <i class="fa fa-plus mt-2"></i>Add New item
+                </div>
+    
+              </div>
+    
+              <div class="portlet-body">
+    
+                <div class="form-body">
+
+                  <div class="form-group">
+                    <div class="row">
+                    <div class="col-2 control-label text-right">Item Name: <span class="required">
+                    * </span>
+                  </div>
+                  <div class="col-5">
+                    <input type="text" class="form-control" name="item"  [(ngModel)]=" empData.item" placeholder="Item Name"
+                    value="">
+                  </div>
+                  <div class="col-5"></div>
+                  </div>
+                </div>
+      
+                <div class="form-group">
+                  <div class="row">
+                  <div class="col-2 control-label text-right">Description:
+                  </div>
+                  <div class="col-5">
+                    <input type="text" class="form-control" name="description"  [(ngModel)]=" empData.description"  placeholder="Purchase From"
+                    value="">
+                  </div>
+                  <div class="col-5"></div>
+                </div>
+              </div>
+                  <div class="form-group">
+                    <div class="row">
+                    <div class="col-2 control-label text-right">Amount price:<span class="required">  * </span>
+                     <span class="fa fa-inr"></span>
+                    </div>
+      
+                      <div class="col-5">
+                        <input type="text" class="form-control" name="amount"  [(ngModel)]=" empData.amount"  placeholder="Price of Item"
+                        value="">
+                      </div>
+                      <div class="col-5"></div>
+                    </div>
+                    </div>
+                     <div>
+                      <input type="file" id="avatar" name="imageproduct" class="ml-4" (change)="fileChangeEvent($event)" #fileInput>
+                    </div>
+                    <div class="form-actions">
+                      <div class="row">
+                        <div class="col text-center">
+                          <button type="button" class="btn green" name="submit" (click)="addiprocurement()" routerLink="/iprocurement">Submit  </button>
+                        </div> 
+            </div>					
+          </div>
+        </div>      
+    
+      </div>
+    
+    </div>
+    

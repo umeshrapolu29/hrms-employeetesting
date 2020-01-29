@@ -1,0 +1,188 @@
+.card{
+    box-shadow: 0 0 15px -5px black;
+}
+.page-bar{
+    margin-bottom: 0px !important;
+}
+.company{
+    cursor: not-allowed;
+}
+.rpFilter{
+    font-weight: bold;
+}
+.field{
+    font-size: 18px;
+    color:#0177bc;
+}
+.report{
+    color: #0177bc;
+    font-size: 23px;
+}
+
+.btn:hover{
+    background: green;
+    color: white;
+}
+thead{
+    background: #ccc;
+}
+.titleName{
+    font-weight: bold;
+    margin-top: 63px;
+}
+.Homebar i,.Homebar a{
+    color:#0177bc;
+}
+.btnShow{
+    background: #e4e2e2;
+
+}
+.btnShow:hover{
+    background: #e4e2e2;
+
+}
+table{     
+        font-style: normal;
+       }
+
+.actionIcons {
+    background: white;
+    box-shadow: 1px 1px 3px -1px black;
+    background: none;
+    outline: none;
+    border: none;
+    margin-right: 10PX;
+    padding: 5px;
+    width: 30px;
+}
+
+.box{
+    height: 200px;
+    width:500px;
+
+    }
+    .img{
+       height: 150px;
+       width:230px;
+    }
+    .delBtn{
+        border:1px solid red;
+        color:red;
+        background: white;
+    }
+    .delBtn:hover{
+    background-color: red;
+    color: white;
+    }
+    .closeBtn{
+        border: 1px solid #1d7ce7;
+        color:#1d7ce7;
+        background: white;
+    
+       }
+    .closeBtn:hover{
+      background:#1d7ce7;
+      color: white;
+        }
+   .dateField{
+    font-size: 20px;
+      }
+
+    // table thead tr td{
+    //     border:2px solid black ;
+    // }
+    // h3{
+    //     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    //     color: #f38c06;
+    //     font-weight: bold;
+    // }
+    // .bgLogo{
+    //     background-image: url('/assets/img/Bg.jpg');
+    //     background-attachment: fixed;
+    //     background-size:cover;
+    //     background-repeat: no-repeat;
+       
+    // }
+
+
+//     td .checkbox-btn{
+//     position: absolute;
+//     top: 78%;
+//     left: 37%;
+//     transform: translate(-50%,-50%);
+//     width: 100px;
+//     height: 40px;
+//     background-color:#ccc;
+// }
+// td .checkbox-btn input{
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     display: block;
+//     top: 0;
+//     left: 0;
+//     cursor: pointer;
+//     opacity: 0;
+//     z-index:1;
+
+// }
+// td .checkbox-btn div{
+// position: absolute;
+// top: 0;
+// left: 0;
+// width: 80%;
+// height: 70%;
+// border: 2px solid #ccc;
+// border-radius: 4px;
+
+// box-sizing: border-box;
+// overflow: hidden;
+
+// }
+// td .checkbox-btn div .slide{
+// position: absolute;
+// top: 0;
+// left: 0;
+// width: 40px;
+// height: 40px;
+// background:#ccc;
+// transition: 0.5s;
+// }
+// td .checkbox-btn input:checked + div .slide{
+// transform:translateX(60px);
+// }
+// td .checkbox-btn .slide:before{
+// content:"A";
+// position: absolute;
+// top: 0;
+// left: -60px;
+// text-align: center;
+// width: 60px;
+// height: 100%;
+// background:#F3565D;
+
+// line-height: 30px;
+// font-weight: bold;
+// color: white;
+// }
+// td .checkbox-btn .slide:after{
+// content: "P";
+// right: -40px;
+// background:#45b6af;
+// position: absolute;
+// top: 0;
+// text-align: center;
+// width: 60px;
+// height: 100%;
+// line-height: 30px;
+// font-weight: bold;
+// color: white;
+
+.update-btn{
+float: right;
+margin:5px;
+background: green;
+    color: white;
+}
+
+
