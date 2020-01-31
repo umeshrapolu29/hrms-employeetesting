@@ -97,6 +97,7 @@ addiprocurement1(){
       console.log(res)
       //console.log(this.empData.date1 )
       console.log(this.empData.amount )
+      console.log("hello")
 }
   )
 
