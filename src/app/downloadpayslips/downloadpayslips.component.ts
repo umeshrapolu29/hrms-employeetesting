@@ -16,6 +16,10 @@ export class DownloadpayslipsComponent implements OnInit {
   file1:string;
   name1:String;
   fullid:String;
+  selected1:any;
+  selected2:any;
+  success:any;
+  Yes:any;
  
   empData={
     file:'',

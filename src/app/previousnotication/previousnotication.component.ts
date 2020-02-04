@@ -10,6 +10,8 @@ import { dateToLocalArray } from '@fullcalendar/core/datelib/marker';
   styleUrls: ['./previousnotication.component.scss']
 })
 export class PreviousnoticationComponent implements OnInit {
+  success:any;
+  Yes:any;
   title:string='';
   description:string='';
   date:string='';

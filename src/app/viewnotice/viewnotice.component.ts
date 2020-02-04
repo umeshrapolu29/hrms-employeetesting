@@ -10,6 +10,7 @@ import { DilogeComponent } from 'app/diloge/diloge.component';
   styleUrls: ['./viewnotice.component.scss']
 })
 export class ViewnoticeComponent implements OnInit {
+  myArray:any;
 
   constructor(private _auth: AuthService,
     private _router: Router,private _snackBar: MatSnackBar,public dialog: MatDialog) { }

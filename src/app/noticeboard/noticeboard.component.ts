@@ -9,6 +9,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./noticeboard.component.scss']
 })
 export class NoticeboardComponent implements OnInit {
+  success:any;
+  Yes:any;
+
   title:string='';
 description:string='';
 date:string='';

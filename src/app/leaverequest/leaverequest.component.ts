@@ -15,6 +15,9 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 })
 export class LeaverequestComponent implements OnInit {
   mydate=Date.now();
+  success:any;
+  Yes:any;
+  leaveType:any;
 
   leavedata={
    type:'',

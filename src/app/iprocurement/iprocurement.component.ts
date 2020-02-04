@@ -12,6 +12,7 @@ import { MatSnackBar, MatDialog } from '@angular/material';
   styleUrls: ['./iprocurement.component.scss']
 })
 export class IprocurementComponent implements OnInit {
+  imageproduct:any;
   item:string='';
   description:string='';
   amount:string='';
@@ -32,6 +33,7 @@ export class IprocurementComponent implements OnInit {
     item:'',
      description:'',
      amount:'',
+     imageproduct:'',
      fullid:localStorage.getItem('fullid')
      
    
@@ -42,6 +44,7 @@ export class IprocurementComponent implements OnInit {
     //selectedFile: ImageSnippet;
     public emoployeeData: FormGroup
     public filesToUpload: Array<File> = [];
+   
 
 
   ngOnInit() {

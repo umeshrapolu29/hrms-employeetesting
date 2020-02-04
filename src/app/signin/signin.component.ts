@@ -24,6 +24,8 @@ export class SigninComponent implements OnInit {
    }
  
   loginUserData = {
+    fullid:"",
+    password:"",
    
   }
 
