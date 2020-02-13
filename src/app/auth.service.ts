@@ -10,8 +10,8 @@ import 'rxjs/add/operator/map'
 })
 export class AuthService {
   private _loginUrl = "https://zyclyx-app.herokuapp.com/users/login";
-  private _login1Url = "https://zyclyx-app.herokuapp.com/Admin/getUsers";
-  private _addemployeeUrl = "https://zyclyx-app.herokuapp.com/admin/uploads";
+  private _login1Url = "https://zyclyx-app.herokuapp.com/TestAdmin/getUsers";
+  private _addemployeeUrl = "https://zyclyx-app.herokuapp.com/TestAdmin/uploads";
   private _leaverequestUrl = "https://zyclyx-app.herokuapp.com/LeaveRequest/LeaveRequest";
 
   constructor(private http: HttpClient,
