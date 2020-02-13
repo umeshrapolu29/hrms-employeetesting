@@ -36,7 +36,7 @@ export class ViewdetailsComponent implements OnInit {
     private _router: Router, private _httpclient:HttpClient) { }
 
   ngOnInit() {
-    this._httpclient.post(`http://localhost:3000/Admin/getUsers`,
+    this._httpclient.post(`https://zyclyx-app.herokuapp.com/TestAdmin/getUsers`,
 {
   fullid:this.leavedata.fullid
 })
