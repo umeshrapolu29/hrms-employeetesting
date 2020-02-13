@@ -36,7 +36,7 @@ export class PreviousnoticationComponent implements OnInit {
   constructor(private _auth: AuthService,
     private _router: Router, private _httpclient:HttpClient) { }
   ngOnInit() {
-    this._httpclient.get('http://localhost:3000/NoticeBoard/ViewFiveNotices')
+    this._httpclient.get('https://zyclyx-app.herokuapp.com/NoticeBoard/ViewFiveNotices')
     .subscribe(
       (res)=>{
         console.log(res)

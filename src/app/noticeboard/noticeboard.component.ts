@@ -20,7 +20,7 @@ date:string='';
 
   ngOnInit() {
    
-    this._httpclient.get('http://localhost:3000/NoticeBoard/ViewNotice')
+    this._httpclient.get('https://zyclyx-app.herokuapp.com/NoticeBoard/ViewNotice')
     .subscribe(
       (res)=>{
         console.log(res)
@@ -36,7 +36,7 @@ date:string='';
   }
   viewnotification()
   {
-    this._httpclient.get('http://localhost:3000/NoticeBoard/ViewFiveNotice')
+    this._httpclient.get('https://zyclyx-app.herokuapp.com/NoticeBoard/ViewFiveNotice')
     .subscribe(
       (res)=>{
       }

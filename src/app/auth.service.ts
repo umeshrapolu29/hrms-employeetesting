@@ -9,10 +9,10 @@ import 'rxjs/add/operator/map'
   providedIn: 'root'
 })
 export class AuthService {
-  private _loginUrl = "http://localhost:3000/users/login";
-  private _login1Url = "http://localhost:3000/Admin/getUsers";
-  private _addemployeeUrl = "http://localhost:3000/admin/uploads";
-  private _leaverequestUrl = "http://localhost:3000/LeaveRequest/LeaveRequest";
+  private _loginUrl = "https://zyclyx-app.herokuapp.com/users/login";
+  private _login1Url = "https://zyclyx-app.herokuapp.com/Admin/getUsers";
+  private _addemployeeUrl = "https://zyclyx-app.herokuapp.com/admin/uploads";
+  private _leaverequestUrl = "https://zyclyx-app.herokuapp.com/LeaveRequest/LeaveRequest";
 
   constructor(private http: HttpClient,
     private _router: Router) { }
@@ -44,7 +44,7 @@ leaverequest(leaveempdata)
 {
   const headers=new HttpHeaders();
 
-  return this.http.post("http://localhost:3000/LeaveRequest/LeaveRequest",leaveempdata,
+  return this.http.post("https://zyclyx-app.herokuapp.com/LeaveRequest/LeaveRequest",leaveempdata,
   {headers:headers});
 }
 uploadSheet(iprocurementdata)
@@ -52,7 +52,7 @@ uploadSheet(iprocurementdata)
   // return this.http.post<any>(this._uploadUrl, upload)
   const headers=new HttpHeaders();
   console.log(iprocurementdata)
-  return this.http.post("http://localhost:3000/IProcurement/request",iprocurementdata,
+  return this.http.post("https://zyclyx-app.herokuapp.com/IProcurement/request",iprocurementdata,
   {headers:headers});
 }
 // addiprocurement(iprodata){
@@ -66,13 +66,13 @@ downloadpayslips(sendyear)
   // return this.http.post<any>(this._uploadUrl, upload)
   const headers=new HttpHeaders();
  // console.log(iprocurementdata)
-  return this.http.post("http://localhost:3000/payslips/getPayslips",sendyear,
+  return this.http.post("https://zyclyx-app.herokuapp.com/payslips/getPayslips",sendyear,
   {headers:headers});
 }
 holidaytype(holidaytype1)
 {
   const headers=new HttpHeaders()
-   return this.http.post("http://localhost:3000/Holiday/ViewHoliday",holidaytype1,
+   return this.http.post("https://zyclyx-app.herokuapp.com/Holiday/ViewHoliday",holidaytype1,
    {headers:headers})
 }
 // getusername(holidaytype1)
@@ -84,13 +84,13 @@ holidaytype(holidaytype1)
 leavestatus(leavestatus)
 {
   const headers=new HttpHeaders()
-   return this.http.post("http://localhost:3000/LeaveRequest/getStatus",leavestatus,
+   return this.http.post("https://zyclyx-app.herokuapp.com/LeaveRequest/getStatus",leavestatus,
    {headers:headers})
 }
 download(sendfullid)
 {
   const headers=new HttpHeaders()
-  return this.http.post("http://localhost:3000/payslips/download",sendfullid,
+  return this.http.post("https://zyclyx-app.herokuapp.com/payslips/download",sendfullid,
   {headers:headers}
   )
 }
