@@ -48,7 +48,7 @@ export class IprocurementComponent implements OnInit {
 
 
   ngOnInit() {
-    this._httpclient.get('https://zyclyx-app.herokuapp.com/IProcurement/getData')
+    this._httpclient.get('http://localhost:3000/IProcurement/getData')
     .subscribe(
       (res)=>{
         console.log("iprocurement")
@@ -107,7 +107,7 @@ addiprocurement1(){
 }
 addiprocurement()
 {
-  this._httpclient.get('https://zyclyx-app.herokuapp.com/IProcurement/update')
+  this._httpclient.get('http://localhost:3000/IProcurement/update')
     .subscribe(
       (res)=>{
         console.log(res)

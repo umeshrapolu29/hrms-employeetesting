@@ -51,11 +51,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                              <tr>
+                              <tr *ngFor="let hero of array" >
                                 <td>1</td>
-                                <td>{{title}}</td>
-                                <td>{{description}}</td>
-                                <td>{{date}}</td>
+                                <td>{{hero.title}}</td>
+                                <td>{{hero.description}}</td>
+                                <td>{{hero.date}}</td>
                                 
                               </tr>  
                              </tbody>
@@ -119,13 +119,13 @@
                       </td>
                                       
                     </tr>   -->
-                    <tr>
-                        <td>1</td>
-                        <td>{{title}}</td>
-                        <td>{{description}}</td>
-                        <td>{{date}}</td>
+                    <tr *ngFor="let hero of array" >
+                      <td>1</td>
+                      <td>{{hero.title}}</td>
+                      <td>{{hero.description}}</td>
+                      <td>{{hero.date}}</td>
                       
-                    </tr>  
+                    </tr> 
                     
                    
                       </tbody>

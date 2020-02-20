@@ -36,13 +36,14 @@ export class ViewdetailsComponent implements OnInit {
     private _router: Router, private _httpclient:HttpClient) { }
 
   ngOnInit() {
-    this._httpclient.post(`https://zyclyx-app.herokuapp.com/TestAdmin/getUsers`,
+    this._httpclient.post(`http://localhost:3000/Admin/getUsers`,
 {
   fullid:this.leavedata.fullid
 })
 .subscribe(
   res=>{
     //console.log("hello")
+    console.log("inside view details");
     console.log(this.leavedata.fullid)
     console.log(res);
      this.email=res[0].email

@@ -85,9 +85,11 @@ export class SigninComponent implements OnInit {
         localStorage.setItem('fullid',res.fullid)
         if(localStorage.getItem('token')=="undefined")
         {
+          
           this._router.navigate(['/signin'])
         }
         else{
+          console.log("login successfull");
         this._router.navigate(['/homepage'])
         }
       },

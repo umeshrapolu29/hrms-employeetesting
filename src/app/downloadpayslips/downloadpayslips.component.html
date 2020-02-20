@@ -167,7 +167,7 @@
                                         <td   name="month" [(ngModel)]="empData.month" >{{selected1}}</td>
                                         <td >{{selected2}}</td>
                                         <td class=""> 
-                                                <button class="actionIcons" data-toggle="modal" data-target="#exampleModalScrollable"><i class="far fa-eye"></i></button>
+                                                <button class="actionIcons" data-toggle="modal" data-target="#exampleModalScrollable" (click)="viewpayslips1()"><i class="far fa-eye"></i></button>
 
                                                 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-scrollable" role="document">

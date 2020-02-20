@@ -49,7 +49,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     
     console.log(this.leavedata.fullid)
-this.http.post(`https://zyclyx-app.herokuapp.com/TestAdmin/getUsers`,
+this.http.post(`http://localhost:3000/Admin/getUsers`,
 {
   fullid:this.leavedata.fullid
 })
@@ -58,9 +58,9 @@ this.http.post(`https://zyclyx-app.herokuapp.com/TestAdmin/getUsers`,
     //console.log("hello")
     localStorage.setItem('name',data[0].name)
     console.log(this.leavedata.fullid)
-    console.log(data);
+    console.log(data +"data is");
      this.name=data[0].name
-     console.log(this.name);
+     console.log(this.name +"name is");
      this.photo=data[0].photo
 
   }

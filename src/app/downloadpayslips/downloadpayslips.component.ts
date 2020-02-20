@@ -47,14 +47,14 @@ export class DownloadpayslipsComponent implements OnInit {
     this.name1=this.empData.name
     this.fullid=this.empData.fullid
     console.log( this.name1+"name is11")
-    this._httpclient.get('http://localhost:4000/app'
-    )
-    .subscribe(
-      (res)=>{
-        console.log("iprocurement")
-        //console.log("iprocurement")
-        console.log(res)
-      })
+    // this._httpclient.get('http://localhost:3000/app'
+    // )
+    // .subscribe(
+    //   (res)=>{
+    //     console.log("iprocurement")
+    //     //console.log("iprocurement")
+    //     console.log(res)
+    //   })
   
   }
   fileChangeEvent(fileInput: any) {
@@ -63,6 +63,7 @@ export class DownloadpayslipsComponent implements OnInit {
   }
   viewpayslips1()
   {
+    console.log("payslip");
   
     let  sendyear = new FormData();
     //senddata.fullid= this.fullid
@@ -82,6 +83,7 @@ export class DownloadpayslipsComponent implements OnInit {
     // console.log(res[0].email)
    this.file1=res[0].file
          console.log(res[0].file+"photo")
+       
     
    //console.log(this.empData)
   }

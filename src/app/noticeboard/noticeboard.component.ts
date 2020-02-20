@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class NoticeboardComponent implements OnInit {
   success:any;
   Yes:any;
+  array:any;
 
   title:string='';
 description:string='';
@@ -20,10 +21,12 @@ date:string='';
 
   ngOnInit() {
    
-    this._httpclient.get('https://zyclyx-app.herokuapp.com/NoticeBoard/ViewNotice')
+    this._httpclient.get('http://localhost:3000/NoticeBoard/ViewNotice')
     .subscribe(
       (res)=>{
         console.log(res)
+        this.array=res;
+        console.log(this.array)
         console.log(res["title"]);
         console.log(res["description"]);
 
@@ -36,7 +39,7 @@ date:string='';
   }
   viewnotification()
   {
-    this._httpclient.get('https://zyclyx-app.herokuapp.com/NoticeBoard/ViewFiveNotice')
+    this._httpclient.get('http://localhost:3000/NoticeBoard/ViewFiveNotice')
     .subscribe(
       (res)=>{
       }
