@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router'
+import { Http } from '@angular/http';
 import{Headers} from '@angular/http'
 import 'rxjs/add/operator/map'
 
@@ -10,18 +11,24 @@ import 'rxjs/add/operator/map'
 })
 export class AuthService {
   private _loginUrl = "http://localhost:3000/users/login";
-  private _login1Url = "http://localhost:3000/Admin/getUsers";
+  private _login1Url = "http://localhost:3002/user/login";
   private _addemployeeUrl = "http://localhost:3000/Admin/uploads";
-  private _leaverequestUrl = "http://localhost:3000/LeaveRequest/LeaveRequest";
+  private _leaverequestUrl = "http://localhost:3002/user/leaverequest";
+  private _leavestatusUrl = "http://localhost:3002/user/leaveapproveddata";
+  private _viewholidayUrl = "http://localhost:3002/user/viewholiday";
+  private _addiprocurementUrl = "http://localhost:3002/user/addiprocurement";
+  private _getiprodataUrl = "http://localhost:3002/user/getapprovediprodata";
+  private _downloadpayslipsUrl = "http://localhost:3002/user/getpayslips";
 
-  constructor(private http: HttpClient,
+
+  constructor(private http: HttpClient,private http1: Http,
     private _router: Router) { }
 
     loginUser(loginUserData){
       return this.http.post<any>(this._loginUrl, loginUserData)
     }
     loginUser1(loginUserData){
-      return this.http.post<any>(this._login1Url, loginUserData)
+      return this.http1.post(this._login1Url, loginUserData)
     }
     getToken() {
       return localStorage.getItem('token')
@@ -42,38 +49,26 @@ addemployee(empData)
 leaverequest(leaveempdata)
 
 {
-  const headers=new HttpHeaders();
-
-  return this.http.post("http://localhost:3000/LeaveRequest/LeaveRequest",leaveempdata,
-  {headers:headers});
+  return this.http1.post(this._leaverequestUrl, leaveempdata)
+ 
 }
 uploadSheet(iprocurementdata)
 {
-  // return this.http.post<any>(this._uploadUrl, upload)
-  const headers=new HttpHeaders();
   console.log(iprocurementdata)
-  return this.http.post("http://localhost:3000/IProcurement/request",iprocurementdata,
-  {headers:headers});
-}
-// addiprocurement(iprodata){
-//   const headers=new HttpHeaders();
+  return this.http1.post(this._addiprocurementUrl, iprocurementdata)
 
-//   return this.http.post("http://localhost:3000/LeaveRequest/LeaveRequest",iprodata,
-//   {headers:headers});
-// }
+}
+
 downloadpayslips(sendyear)
 {
   // return this.http.post<any>(this._uploadUrl, upload)
-  const headers=new HttpHeaders();
- // console.log(iprocurementdata)
-  return this.http.post("http://localhost:3000/payslips/getPayslips",sendyear,
-  {headers:headers});
+  return this.http1.post(this._downloadpayslipsUrl, sendyear)
+
 }
 holidaytype(holidaytype1)
 {
-  const headers=new HttpHeaders()
-   return this.http.post("http://localhost:3000/Holiday/ViewHoliday",holidaytype1,
-   {headers:headers})
+
+  return this.http1.post(this._viewholidayUrl, holidaytype1)
 }
 // getusername(holidaytype1)
 // {
@@ -83,9 +78,13 @@ holidaytype(holidaytype1)
 // }
 leavestatus(leavestatus)
 {
-  const headers=new HttpHeaders()
-   return this.http.post("http://localhost:3000/LeaveRequest/getStatus",leavestatus,
-   {headers:headers})
+  
+  return this.http1.post(this._leavestatusUrl, leavestatus)
+}
+getiprodata(getiprodata)
+{
+  
+  return this.http1.post(this._getiprodataUrl, getiprodata)
 }
 download(sendfullid)
 {

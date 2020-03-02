@@ -106,8 +106,8 @@
                         <input 
                         type="file" 
                         class="custom-file-input "  
-                        name="imageproduct" 
-                        [(ngModel)]="empData.imageproduct"
+                        name="file" 
+                        [(ngModel)]="empData.file"
                         #imageproduct="ngModel"
                         class="ml-4" 
                         (change)="fileChangeEvent($event)"
@@ -213,25 +213,22 @@
               <thead>
                 <tr>
                   <th><b>ID.</b></th>
-                  <th><b> Name</b></th>
-                  <th><b>Purchace Date</b></th>
+                 
+                  <th><b>Item</b></th>
                   <th><b>Price ( <span class="fa fa-inr"></span> )</b></th>
-                  <th><b>Action</b></th> 
+                  <th><b>Status</b></th> 
               </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let hero of myArray" >
-                  <td>{{hero.tid}}</td>
+                <tr *ngFor="let hero of array1" >
+                  <td>{{hero.TID}}</td>
                   <td>{{hero.item}}</td>
-                  <td>{{hero.description}}</td>
                   <td>{{hero.amount}}</td>
-                  <td class="actionIcons"> 
-                      <!-- <button ><i class="fa fa-pen text-blue"></i></button> -->
+                  <td>{{hero.astatus}}</td>
+                  <!-- <td class="actionIcons"> 
+                      <button ><i class="fa fa-pen text-blue"></i></button>
                       <button (click)="openDialog()" class="text-danger"><i class="fa fa-trash-alt "></i></button>
-                      </td>
-                  <td>
-                     
-                  </td>
+                      </td> -->
                                   
                 </tr>  
             

@@ -25,6 +25,16 @@ export class AttendenceComponent implements OnInit {
     }
  
   ngOnInit() {
+
+    this._httpclient.get('http://localhost:3001/user/getpostdata')
+    .subscribe(
+      (res)=>
+      {
+        console.log('===>', res)
+      
+  
+      }
+    )
     var date=new Date();
     console.log(date);
     console.log("attendence");

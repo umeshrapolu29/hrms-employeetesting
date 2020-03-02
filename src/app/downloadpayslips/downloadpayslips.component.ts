@@ -7,6 +7,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DilogeComponent } from 'app/diloge/diloge.component';
 import { HttpClient } from '@angular/common/http';
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-downloadpayslips',
   templateUrl: './downloadpayslips.component.html',
@@ -20,12 +21,15 @@ export class DownloadpayslipsComponent implements OnInit {
   selected2:any;
   success:any;
   Yes:any;
+  myArray:any;
+  myArray1:any;
+  fileName='...';
  
   empData={
     file:'',
     month:'',
     year:'',
-    fullid:localStorage.getItem('fullid'),
+    email:localStorage.getItem('email'),
     name:localStorage.getItem('name')
   
   }
@@ -45,7 +49,7 @@ export class DownloadpayslipsComponent implements OnInit {
   ngOnInit() {
     console.log(this.empData.name+"name is")
     this.name1=this.empData.name
-    this.fullid=this.empData.fullid
+    this.fullid=this.empData.email
     console.log( this.name1+"name is11")
     // this._httpclient.get('http://localhost:3000/app'
     // )
@@ -72,20 +76,26 @@ export class DownloadpayslipsComponent implements OnInit {
     sendyear.append('month',this.empData.month);
     console.log(this.empData.month+ "month is1111")
     sendyear.append('year',this.empData.year);
-    sendyear.append('fullid',this.empData.fullid);
+    sendyear.append('email',this.empData.email);
     //console.log(this.empData +"data is")
    //sendyear.append('name',this.name);
    console.log(this.empData.month+"month is12")
   this._auth.downloadpayslips(sendyear)
   .subscribe((res)=>{
     console.log(res)
+    this.myArray=res;
+        console.log(this.myArray._body)
+        var jsonObj = JSON.parse( this.myArray._body);
+        console.log(jsonObj.data);
+        this.myArray1=jsonObj.data
+        console.log(this.myArray1[0].file)
+        this.file1=this.myArray1[0].file
+        // const blob = new Blob([(this.file1).blob()], { type : 'application/vnd.ms.excel' });
+        // // const file = new File([blob], fileName + '.xlsx', { type: 'application/vnd.ms.excel' });
+        // saveAs(blob);
+      
   
-    // console.log(res[0].email)
-   this.file1=res[0].file
-         console.log(res[0].file+"photo")
-       
-    
-   //console.log(this.empData)
+
   }
   )
   }
@@ -95,7 +105,7 @@ export class DownloadpayslipsComponent implements OnInit {
   sendfullid .append('month',this.empData.month);
 
   sendfullid .append('year',this.empData.year);
-  sendfullid .append('fullid',this.empData.fullid);
+  sendfullid .append('email',this.empData.email);
   this._auth.download(sendfullid)
   .subscribe((res)=>{
     console.log(res)

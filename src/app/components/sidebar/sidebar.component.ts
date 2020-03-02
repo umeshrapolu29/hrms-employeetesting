@@ -6,6 +6,7 @@ import {  Router } from '@angular/router';
 import{HttpErrorResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 //import { Router } from '@angular/router';
+import { Http } from '@angular/http';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -34,34 +35,40 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
   name:string='';
+  array:any;
 
   photo:string;
   leavedata={
    
-     fullid:localStorage.getItem('fullid')
+     email:localStorage.getItem('email')
    }
-   id=this.leavedata.fullid;
+   id=this.leavedata.email;
    
    //console.log(this.leavedata.fullid)
 
-  constructor(private http: HttpClient,private _router: Router){}
+  constructor(private http: HttpClient,private _router: Router,private http1:Http){}
 
   ngOnInit() {
     
-    console.log(this.leavedata.fullid)
-this.http.post(`http://localhost:3000/Admin/getUsers`,
+    console.log(this.leavedata.email)
+this.http1.post(`http://localhost:3002/user/getuserdata`,
 {
-  fullid:this.leavedata.fullid
+  email:this.leavedata.email
 })
 .subscribe(
-  data=>{
-    //console.log("hello")
-    localStorage.setItem('name',data[0].name)
-    console.log(this.leavedata.fullid)
-    console.log(data +"data is");
-     this.name=data[0].name
-     console.log(this.name +"name is");
-     this.photo=data[0].photo
+  res=>{
+    console.log("inside sidebar")
+    console.log(res)
+  
+    this.array=res;
+    var jsonObj = JSON.parse(this.array._body);
+        console.log(jsonObj)
+        this.photo=jsonObj.data.file
+        this.name=jsonObj.data.firstname
+        console.log(this.photo)
+        console.log(this.name)
+              localStorage.setItem('name',jsonObj.data.firstname)
+    
 
   }
 )

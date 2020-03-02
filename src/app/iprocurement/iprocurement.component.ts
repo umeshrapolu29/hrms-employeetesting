@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DilogeComponent } from 'app/diloge/diloge.component';
 import { MatSnackBar, MatDialog } from '@angular/material';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-iprocurement',
@@ -12,7 +13,7 @@ import { MatSnackBar, MatDialog } from '@angular/material';
   styleUrls: ['./iprocurement.component.scss']
 })
 export class IprocurementComponent implements OnInit {
-  imageproduct:any;
+  file:any;
   item:string='';
   description:string='';
   amount:string='';
@@ -29,12 +30,15 @@ export class IprocurementComponent implements OnInit {
   description3:string='';
   amount3:string='';
   tid3:string='';
+  array1:any;
+  array2:any;
   empData = { 
     item:'',
      description:'',
      amount:'',
-     imageproduct:'',
-     fullid:localStorage.getItem('fullid')
+     file:'',
+     email:localStorage.getItem('email'),
+     name:localStorage.getItem('name')
      
    
    }
@@ -48,57 +52,66 @@ export class IprocurementComponent implements OnInit {
 
 
   ngOnInit() {
-    this._httpclient.get('http://localhost:3000/IProcurement/getData')
-    .subscribe(
-      (res)=>{
-        console.log("iprocurement")
-        //console.log("iprocurement")
-        console.log(res)
-        this.myArray=res
-        console.log(this.myArray[0].item)
-        // this.item=res[0].item;
-        // this.description=res[0].description;
-        // this.amount=res[0].amount;
-        // this.tid=res[0].tid;
-        // this.item1=res[1].item;
-        // this.description1=res[1].description;
-        // this.amount1=res[1].amount;
-        // this.tid1=res[1].tid;
-        // this.item2=res[2].item;
-        // this.description2=res[2].description;
-        // this.amount2=res[2].amount;
-        // this.tid2=res[2].tid;
-        // this.item3=res[3].item;
-        // this.description3=res[3].description;
-        // this.amount3=res[3].amount;
-        // this.tid3=res[3].tid;
-      }
-    )
+    // this._httpclient.get('http://localhost:3000/IProcurement/getData')
+    // .subscribe(
+    //   (res)=>{
+    //     console.log("iprocurement")
+     
+    //     console.log(res)
+    //     this.myArray=res
+    //     console.log(this.myArray[0].item)
+   
+    //   }
+    // )
+    console.log("helloo inside bar")
+    const iprocurementdata1 = new FormData();
+    iprocurementdata1.append('email',this.empData.email)
+    this._auth.getiprodata(iprocurementdata1).subscribe((res)=>{
+      console.log(res)
+      this.myArray=res
+        this.myArray=res;
+        var jsonObj = JSON.parse(this.myArray._body);
+        console.log(jsonObj.data)
+        this.array1=jsonObj.data
+    })
     
 
 }
 fileChangeEvent(fileInput: any) {
   this.filesToUpload = <Array<File>>fileInput.target.files;
-  // this.fileName = this.filesToUpload[0].name;
+
 }
 addiprocurement1(){
   const iprocurementdata = new FormData();
-  // iprocurementdata.append('imageproduct', this.filesToUpload[0], this.filesToUpload[0].name);
-  // console.log(File+" file")
-  iprocurementdata.append('imageproduct', this.filesToUpload[0], this.filesToUpload[0].name);
+
+  iprocurementdata.append('file', this.filesToUpload[0], this.filesToUpload[0].name);
   console.log(File+" file")
   iprocurementdata.append('item',this.empData.item);
   iprocurementdata.append('description',this.empData.description);
   iprocurementdata.append('amount',this.empData.amount)
-  iprocurementdata.append('fullid',this.empData.fullid)
+  iprocurementdata.append('email',this.empData.email)
+  iprocurementdata.append('employeename',this.empData.name)
 
   console.log(this.empData )
-  console.log(iprocurementdata)
+  console.log(iprocurementdata+"data")
   this._auth.uploadSheet(iprocurementdata)
   .subscribe(
     (res) => {
       console.log(res)
-      //console.log(this.empData.date1 )
+      this.array2=res;
+        console.log(this.array1._body)
+        var jsonObj = JSON.parse( this.array2._body);
+        console.log(jsonObj.msg)
+        if(jsonObj.msg=="added Iprocumerent"){
+          Swal.fire('','Request send  Successful','success')
+          this._router.navigate(['/homepage'])
+
+        }
+        else{
+          Swal.fire('','Request send Failed','error')
+          this._router.navigate(['/homepage'])
+        }
+     
       console.log(this.empData.amount )
       console.log("hello")
 }

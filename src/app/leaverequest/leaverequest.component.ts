@@ -4,6 +4,7 @@ import {  Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import{HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar, MatDialog } from '@angular/material';
+import Swal from 'sweetalert2'
 
 
 
@@ -18,13 +19,17 @@ export class LeaverequestComponent implements OnInit {
   success:any;
   Yes:any;
   leaveType:any;
+  array:any;
+  array1:any;
+
 
   leavedata={
    type:'',
     fromDate:'',
     toDate:'',
     reason:'',
-    fullid:localStorage.getItem('fullid')
+    email:localStorage.getItem('email'),
+    name:localStorage.getItem('name')
   }
   leavestatus:string='';
   date:string='';
@@ -44,22 +49,25 @@ export class LeaverequestComponent implements OnInit {
 
   ngOnInit() {
     let date=new Date()
-    console.log(this.date)
+    console.log("inside leaverequest")
+ 
    
     const leavestatus = new FormData();
-    leavestatus.append('fullid', this. leavedata.fullid);
-    console.log( this. leavedata.fullid)
+    leavestatus.append('requestto', this. leavedata.email);
+    console.log( this. leavedata.email)
     this._auth.leavestatus(leavestatus)
     .subscribe(
       res=>
       {
-        console.log("status")
-        console.log("leaverequest")
+       
         console.log(res)
-        //this.myArray=res
-        this.leavestatus=res[0].status;
-        console.log( this.leavestatus)
-
+        this.myArray=res;
+        console.log(this.myArray._body)
+        var jsonObj = JSON.parse( this.myArray._body);
+        console.log(jsonObj.data.status)
+        this.leavestatus=jsonObj.data.status
+       
+     
       }
     )
 
@@ -68,32 +76,34 @@ export class LeaverequestComponent implements OnInit {
   }
   leaverequest(){
     const leaveempdata = new FormData();
-    leaveempdata.append('type',this. leavedata.type);
-    leaveempdata.append('fromDate',this. leavedata.fromDate);
-    leaveempdata.append('toDate',this. leavedata.toDate);
+    leaveempdata.append('reqtype',this. leavedata.type);
+    leaveempdata.append('fromdate',this. leavedata.fromDate);
+    leaveempdata.append('todate',this. leavedata.toDate);
     leaveempdata.append('reason', this. leavedata.reason);
-    leaveempdata.append('fullid', this. leavedata.fullid);
-    console.log(this. leavedata)
+    leaveempdata.append('requestto', this. leavedata.email);
+    leaveempdata.append('name', this.leavedata.name);
+    console.log(this.leavedata.name)
     this._auth.leaverequest(leaveempdata)
     .subscribe(
-      res => {
+      (res) => {
         console.log(res)
-        if(localStorage.getItem('token')=="undefined")
-        {
-          this._router.navigate(['/signin'])
+         this.array1=res;
+        console.log(this.array1._body)
+        var jsonObj = JSON.parse( this.array1._body);
+        console.log(jsonObj.msg)
+
+        if(jsonObj.msg=="leave request data inserted"){
+          Swal.fire('','Request send Successful','success')
+          this._router.navigate(['/homepage'])
+
         }
         else{
-        this._router.navigate(['/homepage'])
-        }
-      },
-      err => {
-        if( err instanceof HttpErrorResponse ) {
-          if (err.status === 401) {
-            this._router.navigate(['/signin'])
-          }
+          Swal.fire('','Request Failed','error')
+          this._router.navigate(['/homepage'])
         }
       })
-      alert("submit successfully")
-  }
+       
+  
 
-}
+    }
+  }

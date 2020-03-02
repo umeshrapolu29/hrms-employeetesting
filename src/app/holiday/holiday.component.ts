@@ -15,6 +15,7 @@ export class HolidayComponent implements OnInit {
   day:string='';
   file1:string;
   myArray:any;
+  array1:any;
 
   // day:string='';
   // reason1:string='';
@@ -34,7 +35,7 @@ export class HolidayComponent implements OnInit {
      fromDate:'',
      toDate:'',
      reason:'',
-     holidayType:'Holiday',
+     holidayType:'NationalHoliday',
      holidayType1:'OptionalHoliday',
     
      fullid:localStorage.getItem('fullid')
@@ -130,7 +131,7 @@ $(function() {
  
     const holidaytype1= new FormData()
     console.log("holiday type is" +data)
-    holidaytype1.append('holidayType',data)
+    holidaytype1.append('holidaytype',data)
 
     this._auth.holidaytype(holidaytype1)
     .subscribe(
@@ -138,14 +139,18 @@ $(function() {
         console.log("holiday")
         console.log(res)
         this.myArray=res
+        this.myArray=res;
+        var jsonObj = JSON.parse(this.myArray._body);
+        console.log(jsonObj.data)
+        this.array1=jsonObj.data
 
-        console.log(this.myArray[0].date)
-        this.reason=res[0].reason
-        this.Type=res[0].holidaytype
-        this.date=res[0].date
-        this.day=res[0].dayofweek
-        this.file1=res[0].file
-        console.log(res[0].file+"photo")
+        // console.log(this.myArray[0].date)
+        // this.reason=res[0].reason
+        // this.Type=res[0].holidaytype
+        // this.date=res[0].date
+        // this.day=res[0].dayofweek
+        // this.file1=res[0].file
+        // console.log(res[0].file+"photo")
 
       }
     )

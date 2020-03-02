@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-noticeboard',
@@ -17,22 +18,19 @@ export class NoticeboardComponent implements OnInit {
 description:string='';
 date:string='';
   constructor(private _auth: AuthService,
-    private _router: Router, private _httpclient:HttpClient) { }
+    private _router: Router, private _httpclient:HttpClient,private http1:Http,) { }
 
   ngOnInit() {
    
-    this._httpclient.get('http://localhost:3000/NoticeBoard/ViewNotice')
+    this.http1.get('http://localhost:3002/user/viewnotice')
     .subscribe(
       (res)=>{
         console.log(res)
         this.array=res;
-        console.log(this.array)
-        console.log(res["title"]);
-        console.log(res["description"]);
-
-        this.title=res["title"];
-        this.description=res["description"];
-        this.date=res["date"];
+       
+        var jsonObj = JSON.parse(this.array._body);
+        console.log(jsonObj.data)
+        this.array=jsonObj.data;
 
       }
     ) 

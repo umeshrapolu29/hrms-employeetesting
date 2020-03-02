@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ViewdetailsComponent implements OnInit {
   employees={token: localStorage.getItem('token')};
+  array:any;
   email:String='';
   found:boolean=false;
   image:String='';
@@ -23,7 +25,7 @@ export class ViewdetailsComponent implements OnInit {
   id:number;
   leavedata={
    
-    fullid:localStorage.getItem('fullid')
+    email:localStorage.getItem('email')
   }
   empData = { 
     
@@ -33,57 +35,37 @@ export class ViewdetailsComponent implements OnInit {
   }
 
   constructor(private _auth: AuthService,
-    private _router: Router, private _httpclient:HttpClient) { }
+    private _router: Router, private _httpclient:HttpClient,private http1:Http) { }
 
   ngOnInit() {
-    this._httpclient.post(`http://localhost:3000/Admin/getUsers`,
+    this.http1.post(`http://localhost:3002/user/getuserdata`,
 {
-  fullid:this.leavedata.fullid
+  email:this.leavedata.email
 })
 .subscribe(
   res=>{
     //console.log("hello")
     console.log("inside view details");
-    console.log(this.leavedata.fullid)
+    console.log(this.leavedata.email)
     console.log(res);
-     this.email=res[0].email
-     console.log(this.email)
-      this.name=res[0].name
-      this.id=res[0].fullid
-      this.DOJ=res[0].DOJ
-      this.DOB=res[0].DOB
-      this.phone=res[0].phone
-    this.gender=res[0].gender
-    this.photo=res[0].photo
+    this.array=res;
+    var jsonObj = JSON.parse(this.array._body);
+        console.log(jsonObj)
+        this.photo=jsonObj.data.file
+        console.log(this.photo)
+     this.email=jsonObj.data.email
+    
+      this.name=jsonObj.data.name
+      this.id=jsonObj.data._id
+      this.DOJ=jsonObj.data.DOJ
+      this.DOB=jsonObj.data.DOB
+      this.phone=jsonObj.data.phonenumber
+    this.gender=jsonObj.data.gender
+    this.photo=jsonObj.data.photo
 
   }
 )
-    // this._httpclient.post('http://localhost:3000/Users/getUsers',
-    // {
-    //     fullid:'ZYX_2019_08_18'
-    // })
-    // .subscribe(
-    //   (res1)=>{
-    //     console.log(res1)
-    //   })
-
-    // this._httpclient.get('http://localhost:3000/Users/getUsers')
-    // .subscribe(
-    //   (res)=>{
-     
-    //     console.log( localStorage.getItem('token'))
-    //     console.log(res);
-       
-    //           //  this.email=res[0].email;
-    //           //   this.image=res[0].photo;
-    //           //  this.found=true;
-
-    //          console.log(this.email+"email is");
-    //          console.log(this.image+" image is");
-            
-    //   }
-        
-    // )
+    
   }
 
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {  Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import{HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-signin',
@@ -14,6 +15,8 @@ export class SigninComponent implements OnInit {
   password:number;
   name1:string='';
   name2:string='jhsfdgkis'
+  array:any;
+  array1:any;
 
   leavedata={
     type:'',
@@ -24,7 +27,7 @@ export class SigninComponent implements OnInit {
    }
  
   loginUserData = {
-    fullid:"",
+    email:"",
     password:"",
    
   }
@@ -32,16 +35,7 @@ export class SigninComponent implements OnInit {
   constructor(private _auth: AuthService,
               private _router: Router) { }
 
-  // onKey(event:any){
-  //   this.name=event.target.value;
-  //   console.log(this.name)
-
-  // }
-  // onKey1(event:any){
-  //   this.password=event.target.value;
-  //   console.log(this.password)
-
-  // }
+  
 
  
   ngOnInit() {
@@ -50,111 +44,46 @@ export class SigninComponent implements OnInit {
   }
   
   loginUser() {
-    // const holidaytype1= new FormData();
-    // // leaveempdata.append('type',this. leavedata.type);
-    // // leaveempdata.append('fromDate',this. leavedata.fromDate);
-    // // leaveempdata.append('toDate',this. leavedata.toDate);
-    // holidaytype1.append('reason', this. loginUserData.password);
-    // holidaytype1.append('fullid', this. loginUserData.fullid);
-    // console.log(this. loginUserData.password)
-    // //console.log(this. holidaytype1)
-    // this._auth.getusername(holidaytype1)
-    // .subscribe(
-    //   res => {
-    //     console.log(res)
-    //     console.log("fullid")
-    //   }
-    // )
+   
     console.log(this.loginUserData)
     this._auth.loginUser1(this.loginUserData)
     .subscribe(
       res => {
         console.log("second")
         console.log(res);
-        this.name1="sai";
+        // console.log(JSON.stringify(res))
+        this.array=res
+        console.log(this.array._body);
+        this.array1=this.array._body
+        var jsonObj = JSON.parse(this.array._body);
+        console.log(jsonObj.msg)
+        console.log(jsonObj.data.email)
+        localStorage.setItem('email',jsonObj.data.email)
+        if(jsonObj.msg=="login successfull")
+        {
+          console.log("login successfull");
+          Swal.fire('','login Successful','success')
+          this._router.navigate(['/homepage'])
+        }
+        else{
+          Swal.fire('','login Failed','error')
+          this._router.navigate(['/signin'])
+        }
+      
         
       }     
     )
    
-    console.log(this.loginUserData)
-    this._auth.loginUser(this.loginUserData)
-    .subscribe(
-      res => {
-        console.log(res)
-        localStorage.setItem('token', res.token)
-        localStorage.setItem('fullid',res.fullid)
-        if(localStorage.getItem('token')=="undefined")
-        {
-          
-          this._router.navigate(['/signin'])
-        }
-        else{
-          console.log("login successfull");
-        this._router.navigate(['/homepage'])
-        }
-      },
-      err => {
-        if( err instanceof HttpErrorResponse ) {
-          if (err.status === 401) {
-            console.log("error");
-            this._router.navigate(['/signin'])
-          }
-        }
-      }
-    ) 
    
 
+  }
   
 
-  }
-  // userlogin()
-  //   {
-  //     console.log(this.name)
-  //     this.httpClient.get(`http://localhost:3000/admin/data`)
-  //     .subscribe(
-  //       (data:any[])=>
-  //       {
-  //       console.log(data);
-
-          
-  //       }
-  //    )
-  //   }
 
 
 
 
 
-//     postProfile(){
-//        console.log(this.name)
-//       console.log(this.password)
-//       this.httpClient.post(`http://localhost:3000/admin/login`,
-//       {
-//         email:this.name,
-//          password: this.password
-//       })
-//       .subscribe(
-//         (data:any) => {
-//           console.log(data);
-//           localStorage.setItem('token',data.token)
-//           if(!!localStorage.getItem('token') &&  localStorage.getItem('token')!="undefined")
-//           {
-//             console.log("in if"+!!localStorage.getItem('token'))
-//           this._router.navigate(['/addnotice'])
-//           }
-//           else if(localStorage.getItem('token')=="undefined"){
-//             console.log("in else"+!!localStorage.getItem('token'))
-//             this._router.navigate(['/signin'])
-//           }
-//         }
-//       )
-//     }
-
-//       // verif method
-// loggedin()
-// {
-//   return !!localStorage.getItem('token')
-// }
 
 }
 
