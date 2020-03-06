@@ -27,6 +27,7 @@ import { HomepageComponent } from 'app/homepage/homepage.component';
 import { DownloadpayslipsComponent } from 'app/downloadpayslips/downloadpayslips.component';
 import { EmployeesigninComponent } from 'app/employeesignin/employeesignin.component';
 import { PreviousnoticationComponent } from 'app/previousnotication/previousnotication.component';
+import { ForgotpasswordComponent } from 'app/forgotpassword/forgotpassword.component';
 
 
 
@@ -98,5 +99,6 @@ export const AdminLayoutRoutes: Routes = [
     {path:'downloadpayslips',component:DownloadpayslipsComponent},
     {path:'',component:HomepageComponent},
     {path:'previousnotication',component:PreviousnoticationComponent},
+    {path:'forgotpassword',component:ForgotpasswordComponent},
     
 ];

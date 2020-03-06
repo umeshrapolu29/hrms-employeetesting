@@ -38,7 +38,7 @@ export class ViewdetailsComponent implements OnInit {
     private _router: Router, private _httpclient:HttpClient,private http1:Http) { }
 
   ngOnInit() {
-    this.http1.post(`http://localhost:3002/user/getuserdata`,
+    this.http1.post(`https://hrmsbackend.herokuapp.com/user/getuserdata`,
 {
   email:this.leavedata.email
 })
@@ -56,7 +56,7 @@ export class ViewdetailsComponent implements OnInit {
      this.email=jsonObj.data.email
     
       this.name=jsonObj.data.name
-      this.id=jsonObj.data._id
+      this.id=jsonObj.data.fullid
       this.DOJ=jsonObj.data.DOJ
       this.DOB=jsonObj.data.DOB
       this.phone=jsonObj.data.phonenumber

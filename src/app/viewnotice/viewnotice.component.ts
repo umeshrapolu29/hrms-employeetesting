@@ -16,7 +16,7 @@ export class ViewnoticeComponent implements OnInit {
     private _router: Router,private _snackBar: MatSnackBar,public dialog: MatDialog) { }
     openSnackBar() {      
        this._snackBar.open("submit Successfully !!", "", { 
-        duration: 3000,
+        duration: 3000, 
         });                      
     }
 

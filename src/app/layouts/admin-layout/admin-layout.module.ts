@@ -22,6 +22,7 @@ import{AddiprocurementComponent} from '../../addiprocurement/addiprocurement.com
 import{ViewattendanceComponent} from '../../viewattendance/viewattendance.component';
 import{PreviousnoticationComponent } from '../../previousnotication/previousnotication.component';
 
+
 import {
   MatButtonModule,
   MatInputModule,
@@ -33,6 +34,7 @@ import {
 import { from } from 'rxjs';
 import { HomepageComponent } from 'app/homepage/homepage.component';
 import { DownloadpayslipsComponent } from 'app/downloadpayslips/downloadpayslips.component';
+import { ForgotpasswordComponent } from 'app/forgotpassword/forgotpassword.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -70,7 +72,7 @@ import { DownloadpayslipsComponent } from 'app/downloadpayslips/downloadpayslips
     ViewattendanceComponent,
     HomepageComponent,
     DownloadpayslipsComponent,
-    PreviousnoticationComponent 
+    PreviousnoticationComponent ,ForgotpasswordComponent
     
   ]
 })
