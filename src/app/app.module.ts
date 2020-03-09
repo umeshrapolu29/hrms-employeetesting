@@ -41,6 +41,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DilogeComponent } from './diloge/diloge.component';
 import { MatTooltipModule } from '@angular/material';
 
+import { ForgotpasswordComponent } from 'app/forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from 'app/resetpassword/resetpassword.component';
+
 
 
 
@@ -72,6 +75,10 @@ import { MatTooltipModule } from '@angular/material';
     SigninComponent,
     EmployeesigninComponent,
     DilogeComponent,
+    ResetpasswordComponent,
+    ForgotpasswordComponent,
+    
+  
 
 
     ],

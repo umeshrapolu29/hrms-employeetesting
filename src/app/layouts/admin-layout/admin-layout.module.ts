@@ -34,7 +34,7 @@ import {
 import { from } from 'rxjs';
 import { HomepageComponent } from 'app/homepage/homepage.component';
 import { DownloadpayslipsComponent } from 'app/downloadpayslips/downloadpayslips.component';
-import { ForgotpasswordComponent } from 'app/forgotpassword/forgotpassword.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -72,7 +72,7 @@ import { ForgotpasswordComponent } from 'app/forgotpassword/forgotpassword.compo
     ViewattendanceComponent,
     HomepageComponent,
     DownloadpayslipsComponent,
-    PreviousnoticationComponent ,ForgotpasswordComponent
+    PreviousnoticationComponent ,
     
   ]
 })

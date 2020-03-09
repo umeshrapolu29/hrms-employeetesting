@@ -28,6 +28,8 @@ export class AuthService {
   private _addiprocurementUrl = " https://hrmsbackend.herokuapp.com/user/addiprocurement";
   private _getiprodataUrl = " https://hrmsbackend.herokuapp.com/user/getapprovediprodata";
   private _downloadpayslipsUrl = " https://hrmsbackend.herokuapp.com/user/getpayslips";
+  private _resetpasswordUrl = "  https://hrmsbackend.herokuapp.com/user/resetpassword";
+  private _forgotpasswordUrl = "  https://hrmsbackend.herokuapp.com/user/forgotpassword";
 
   constructor(private http: HttpClient,private http1: Http,
     private _router: Router) { }
@@ -100,6 +102,16 @@ download(sendfullid)
   return this.http.post("http://localhost:3000/payslips/download",sendfullid,
   {headers:headers}
   )
+}
+resetpassword(getiprodata)
+{
+  
+  return this.http1.post(this._resetpasswordUrl, getiprodata)
+}
+forgotpassword(getiprodata)
+{
+  
+  return this.http1.post(this._forgotpasswordUrl, getiprodata)
 }
 
 }

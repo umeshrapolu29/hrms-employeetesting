@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-holiday',
@@ -16,6 +17,7 @@ export class HolidayComponent implements OnInit {
   file1:string;
   myArray:any;
   array1:any;
+  array:any;
 
   // day:string='';
   // reason1:string='';
@@ -46,7 +48,7 @@ export class HolidayComponent implements OnInit {
 
 
   constructor(private _auth: AuthService,
-    private _router: Router, private _httpclient:HttpClient) { }
+    private _router: Router, private _httpclient:HttpClient,private http1:Http,) { }
 
   ngOnInit() {
     // this._httpclient.get('http://localhost:3000/Holiday/ViewHoliday')
@@ -154,6 +156,21 @@ $(function() {
 
       }
     )
+  }
+  allholidaytype(){
+    this.http1.get('http://localhost:3000/user/allholidays')
+    .subscribe(
+      (res)=>{
+        console.log(res)
+        this.array=res;
+       
+        var jsonObj = JSON.parse(this.array._body);
+        console.log(jsonObj.data)
+        this.array1=jsonObj.data;
+
+      }
+    )
+
   }
 
 }

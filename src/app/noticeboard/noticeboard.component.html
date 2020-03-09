@@ -47,6 +47,7 @@
                                   <th> Title</th>
                                   <th> Description</th>
                                   <th> Date</th>
+                                  <th><b>Action</b></th>
                           
                             </tr>
                             </thead>
@@ -56,6 +57,32 @@
                                 <td>{{hero.title}}</td>
                                 <td>{{hero.description}}</td>
                                 <td>{{hero.date}}</td>
+                                <td class=""> 
+                                  <button class="actionIcons" data-toggle="modal" data-target="#exampleModalScrollable" (click)="viewNotice()"><i class="far fa-eye"></i></button>
+                                  <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalScrollableTitle">Notice</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          View notice here...
+                                          
+                                          
+                                          <img src="{{file1}}" class="card-img-top" alt="...">
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-sm rounded btn-info" data-dismiss="modal">Close</button>
+                                       
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  </td>
                                 
                               </tr>  
                              </tbody>
@@ -102,6 +129,7 @@
                         <th> Title</th>
                         <th> Description</th>
                         <th> Date</th>
+                        <th><b>Action</b></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -124,6 +152,32 @@
                       <td>{{hero.title}}</td>
                       <td>{{hero.description}}</td>
                       <td>{{hero.date}}</td>
+                      <td class=""> 
+                        <button class="actionIcons" data-toggle="modal" data-target="#exampleModalScrollable1" (click)="viewNotice()"><i class="far fa-eye"></i></button>
+                         <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                          <h5 class="modal-title" id="exampleModalScrollableTitle">Payslip</h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                          View payslip here...
+                                                          
+                                                          
+                                                          <img src="{{file1}}" class="card-img-top" alt="...">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                          <button type="button" class="btn btn-sm rounded btn-info" data-dismiss="modal">Close</button>
+                                                       
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+
+                        </td>
                       
                     </tr> 
                     
